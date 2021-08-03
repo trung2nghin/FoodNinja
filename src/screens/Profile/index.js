@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 21,
     letterSpacing: 0.5,
-    color: '#3B3B3B',
+    color: '#3B3B3B', 
     opacity: 0.3,
   },
   btnvoucher: {

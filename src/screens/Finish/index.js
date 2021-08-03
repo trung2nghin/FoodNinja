@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import Assets from '../../config/Assets';
 import LinearGradient from 'react-native-linear-gradient';
 
-const Finish = () => {
+const Finish = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Image source={Assets.congra} style={{marginTop: 120}} />
@@ -15,7 +15,9 @@ const Finish = () => {
         start={{x: 0, y: 0}}
         end={{x: 1, y: 1}}
         style={styles.linearButton}>
-        <TouchableOpacity style={styles.btnSearch}>
+        <TouchableOpacity
+          style={styles.btnSearch}
+          onPress={() => navigation.navigate('SignUp')}>
           <Text style={styles.txtBtn}>Back</Text>
         </TouchableOpacity>
       </LinearGradient>

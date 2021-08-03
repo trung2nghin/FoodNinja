@@ -11,7 +11,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import Assets from '../../config/Assets';
 
-const ViaMethod = () => {
+const ViaMethod = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.info}>
@@ -46,7 +46,7 @@ const ViaMethod = () => {
             start={{x: 0, y: 0}}
             end={{x: 1, y: 1}}
             style={styles.linearButton}>
-            <TouchableOpacity style={styles.btnAcc}>
+            <TouchableOpacity style={styles.btnAcc} onPress={() => navigation.navigate('Password')}>
               <Text style={styles.txtAcc}>Next</Text>
             </TouchableOpacity>
           </LinearGradient>

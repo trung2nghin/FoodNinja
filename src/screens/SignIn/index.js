@@ -11,7 +11,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import Assets from '../../config/Assets';
 
-const Login = () => {
+const SignIn = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.background}>
@@ -20,52 +20,51 @@ const Login = () => {
         <Text style={styles.textDown}>Deliever Favorite Food</Text>
       </View>
       <View style={styles.login}>
-        <Text style={styles.txtLogin}>Login To Your Account</Text>
+        <Text style={styles.txtLogin}>Sign Up For Free</Text>
+        <TextInput
+          style={styles.txtInputBar}
+          placeholder="User Name"></TextInput>
         <TextInput style={styles.txtInputBar} placeholder="Email"></TextInput>
         <TextInput
           style={styles.txtInputBar}
-          placeholder="Password">
-            <Image source={Assets.facebook}/>
-          </TextInput>
+          placeholder="Password"></TextInput>
       </View>
-      <Text styles={styles.txtContinue}>Or continue with</Text>
-      <View style={styles.content}>
-        <TouchableOpacity style={styles.contentfb}>
-          <Image source={Assets.facebook} />
-          <Text style={styles.txtcontentfb}>Facebook</Text>
+      <View style={{marginLeft: 35, marginTop: 8}}>
+        <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Image source={Assets.check} />
+          <Text style={styles.txtQues}>Keep Me Signed In</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.contentgg}>
-          <Image source={Assets.google} />
-          <Text style={styles.txtcontentgg}>Google</Text>
+        <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', marginTop: 10, marginBottom: 22}}>
+          <Image source={Assets.check} />
+          <Text style={styles.txtQues}>Email Me About Special Pricing</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={{marginTop: 20}}>
-        <Text style={styles.txtForgot}>Forgot Your Password</Text>
-      </TouchableOpacity>
       <View>
-        <View>
+        <View style={styles.btn}>
           <LinearGradient
             colors={['#53E88B', '#15BE77']}
             start={{x: 0, y: 0}}
             end={{x: 1, y: 1}}
             style={styles.linearButton}>
-            <TouchableOpacity style={styles.btnLogin}>
-              <Text style={styles.txtbtnLogin}>Login</Text>
+            <TouchableOpacity style={styles.btnAcc} onPress={() => navigation.navigate('SignupProcess')}>
+              <Text style={styles.txtAcc}>Create Account</Text>
             </TouchableOpacity>
           </LinearGradient>
         </View>
+        <TouchableOpacity style={{marginTop: 6}} onPress={() => navigation.navigate('SignUp')}>
+          <Text style={styles.txtForgot}>already have an account?</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-export default Login;
+export default SignIn;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFF',
-    alignItems: 'center',
   },
   background: {
     backgroundColor: 'white',
@@ -108,56 +107,13 @@ const styles = StyleSheet.create({
     paddingLeft: 28,
     marginBottom: 12,
   },
-  txtContinue: {
-    fontSize: 12,
+  txtQues: {
+    color: '#000000',
     fontWeight: '400',
     lineHeight: 20,
-    textAlign: 'center',
-    marginTop: 8,
-    marginBottom: 20,
-  },
-  content: {
-    marginTop: 20,
-    flexDirection: 'row',
-  },
-  contentfb: {
-    width: 152,
-    height: 57,
-    marginRight: 21,
-    borderWidth: 1,
-    borderColor: '#F4F4F4',
-    borderRadius: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  contentgg: {
-    width: 152,
-    height: 57,
-    borderWidth: 1,
-    borderColor: '#F4F4F4',
-    borderRadius: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  txtcontentfb: {
-    fontSize: 14,
-    lineHeight: 14,
-    letterSpacing: 0.5,
-    color: '#09051C',
-    fontWeight: 'bold',
+    fontSize: 12,
     fontStyle: 'normal',
-    marginLeft: 13,
-  },
-  txtcontentgg: {
-    fontSize: 14,
-    lineHeight: 14,
-    letterSpacing: 0.5,
-    color: '#09051C',
-    fontWeight: 'bold',
-    fontStyle: 'normal',
-    marginLeft: 13,
+    marginLeft: 35,
   },
   txtForgot: {
     color: '#53E88B',
@@ -165,17 +121,21 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     fontSize: 12,
     fontStyle: 'normal',
+    textAlign: 'center',
     textDecorationLine: 'underline',
+  },
+  btn: {
+    alignItems: 'center',
   },
   linearButton: {
     height: 57,
-    width: 141,
+    width: 175,
     borderRadius: 15,
     marginBottom: 16,
-    marginTop: 36,
+    marginTop: 20,
     justifyContent: 'center',
   },
-  txtbtnLogin: {
+  txtAcc: {
     color: '#FFFFFF',
     fontSize: 16,
     lineHeight: 21,

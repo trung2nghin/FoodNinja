@@ -34,5 +34,5 @@ const Assets = {
   voucher: require('../assets/voucher.png'),
   spacy: require('../assets/spacy.png'),
 };
-
+ 
 export default Assets;

@@ -4,7 +4,7 @@ import {StyleSheet, Text, View} from 'react-native';
 const Cart = () => {
   return (
     <View style={{flex: 1}}>
-      <Text>Cart</Text>
+      <Text style={{textAlign: 'center'}}>Cart</Text>
     </View>
   );
 };

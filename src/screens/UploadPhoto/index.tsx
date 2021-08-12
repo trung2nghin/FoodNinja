@@ -10,26 +10,38 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Assets from '../../config/Assets';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {TRootStackParamList} from '../../../App';
 
-const PaymentMethod = ({navigation}) => {
+type SignUpScreenNavigationProp = StackNavigationProp<
+  TRootStackParamList,
+  'UploadPhoto'
+>;
+
+type Props = {
+  navigation: SignUpScreenNavigationProp;
+};
+
+const UploadPhoto = ({navigation}: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.info}>
         <Image source={Assets.back} />
-        <Text style={styles.txtBio}>Payment Method</Text>
+        <Text style={styles.txtBio}>Upload Your Photo {'\n'}Profile</Text>
         <Text style={styles.txtEx}>
           This data will be displayed in your account {'\n'}profile for
           secrurity
         </Text>
-        <TouchableOpacity style={styles.payBtn}>
-          <Image source={Assets.paypal} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.payBtn}>
-          <Image source={Assets.visa} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.payBtn}>
-          <Image source={Assets.payoneer} />
-        </TouchableOpacity>
+        <View>
+          <TouchableOpacity style={styles.payBtn}>
+            <Image source={Assets.gallery} />
+            <Text style={styles.txtSection}>From Gallery</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.payBtn}>
+            <Image source={Assets.camera} />
+            <Text style={styles.txtSection}>Take Photo</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <View>
         <View style={styles.btn}>
@@ -38,7 +50,8 @@ const PaymentMethod = ({navigation}) => {
             start={{x: 0, y: 0}}
             end={{x: 1, y: 1}}
             style={styles.linearButton}>
-            <TouchableOpacity style={styles.btnAcc} onPress={() => navigation.navigate('UploadPhoto')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('UploadPreview')}>
               <Text style={styles.txtAcc}>Next</Text>
             </TouchableOpacity>
           </LinearGradient>
@@ -48,7 +61,7 @@ const PaymentMethod = ({navigation}) => {
   );
 };
 
-export default PaymentMethod;
+export default UploadPhoto;
 
 const styles = StyleSheet.create({
   container: {
@@ -78,14 +91,21 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
   },
+  txtSection: {
+    fontWeight: 'bold',
+    fontStyle: 'normal',
+    fontSize: 14,
+    lineHeight: 25,
+    color: '#000000',
+    paddingTop: 4,
+  },
   payBtn: {
     backgroundColor: '#FFF',
-    width: 335,
-    height: 73,
+    width: 350,
+    height: 129,
     borderWidth: 1,
     borderColor: '#F4F4F4',
     borderRadius: 22,
-    paddingLeft: 28,
     marginBottom: 20,
     justifyContent: 'center',
     alignItems: 'center',
@@ -107,7 +127,7 @@ const styles = StyleSheet.create({
     width: 157,
     borderRadius: 15,
     marginBottom: 16,
-    marginTop: 145,
+    marginTop: 110,
     justifyContent: 'center',
   },
   txtAcc: {

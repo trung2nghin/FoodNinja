@@ -4,39 +4,40 @@ import {
   Text,
   View,
   Image,
-  Pressable,
-  TextInput,
   TouchableOpacity,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Assets from '../../config/Assets';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {TRootStackParamList} from '../../../App';
 
-const SetLocation = ({navigation}) => {
+type SignUpScreenNavigationProp = StackNavigationProp<
+  TRootStackParamList,
+  'PaymentMethod'
+>;
+
+type Props = {
+  navigation: SignUpScreenNavigationProp;
+};
+const PaymentMethod = ({navigation}: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.info}>
         <Image source={Assets.back} />
-        <Text style={styles.txtBio}>Set Your Location</Text>
+        <Text style={styles.txtBio}>Payment Method</Text>
         <Text style={styles.txtEx}>
           This data will be displayed in your account {'\n'}profile for
           secrurity
         </Text>
-      </View>
-      <View style={{alignItems: 'center'}}>
-        <View style={styles.payBtn}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Image
-              source={Assets.pin}
-              style={{marginRight: 14, marginLeft: 11}}
-            />
-            <Text style={styles.txtSection}>Your Location</Text>
-          </View>
-          <View>
-            <TouchableOpacity style={styles.setLocation}>
-              <Text style={styles.txtSection}>Set Location</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+        <TouchableOpacity style={styles.payBtn}>
+          <Image source={Assets.paypal} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.payBtn}>
+          <Image source={Assets.visa} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.payBtn}>
+          <Image source={Assets.payoneer} />
+        </TouchableOpacity>
       </View>
       <View>
         <View style={styles.btn}>
@@ -45,9 +46,7 @@ const SetLocation = ({navigation}) => {
             start={{x: 0, y: 0}}
             end={{x: 1, y: 1}}
             style={styles.linearButton}>
-            <TouchableOpacity
-              style={styles.btnAcc}
-              onPress={() => navigation.navigate('SignupSuccess')}>
+            <TouchableOpacity onPress={() => navigation.navigate('UploadPhoto')}>
               <Text style={styles.txtAcc}>Next</Text>
             </TouchableOpacity>
           </LinearGradient>
@@ -57,7 +56,7 @@ const SetLocation = ({navigation}) => {
   );
 };
 
-export default SetLocation;
+export default PaymentMethod;
 
 const styles = StyleSheet.create({
   container: {
@@ -66,7 +65,7 @@ const styles = StyleSheet.create({
   },
   info: {
     paddingTop: 38,
-    paddingLeft: 25,
+    paddingLeft: 20,
   },
   txtBio: {
     fontSize: 25,
@@ -87,23 +86,16 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
   },
-  txtSection: {
-    fontWeight: 'bold',
-    fontStyle: 'normal',
-    fontSize: 14,
-    lineHeight: 17,
-    letterSpacing: 0.5,
-    color: '#000000',
-  },
   payBtn: {
     backgroundColor: '#FFF',
-    width: 342,
-    height: 147,
+    width: 335,
+    height: 73,
     borderWidth: 1,
     borderColor: '#F4F4F4',
     borderRadius: 22,
+    paddingLeft: 28,
     marginBottom: 20,
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     alignItems: 'center',
     // boxshadow
     shadowColor: 'rgb(90, 108, 234)',
@@ -118,28 +110,12 @@ const styles = StyleSheet.create({
   btn: {
     alignItems: 'center',
   },
-  setLocation: {
-    width: 322,
-    height: 57,
-    borderRadius: 15,
-    backgroundColor: '#F6F6F6',
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: '#5A6CEA',
-    shadowOffset: {
-      width: 0,
-      height: 0.5,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 50,
-    elevation: 3,
-  },
   linearButton: {
     height: 57,
     width: 157,
     borderRadius: 15,
     marginBottom: 16,
-    marginTop: 270,
+    marginTop: 145,
     justifyContent: 'center',
   },
   txtAcc: {

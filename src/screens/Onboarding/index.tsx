@@ -9,12 +9,24 @@ import {
   Pressable,
 } from 'react-native';
 import Assets from '../../config/Assets';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {TRootStackParamList} from '../../../App';
 
+type SignUpScreenNavigationProp = StackNavigationProp<
+  TRootStackParamList,
+  'Onboarding'
+>;
+
+type Props = {
+  navigation: SignUpScreenNavigationProp;
+};
 const widthScreen = Dimensions.get('window').width;
-const Onboarding = ({navigation}) => {
+const Onboarding = ({navigation}: Props) => {
   return (
-    <Pressable style={styles.container} onPress={() => navigation.navigate('Intro')}>
-      <ImageBackground source={Assets.Pattern} style={styles.background} >
+    <Pressable
+      style={styles.container}
+      onPress={() => navigation.navigate('Intro')}>
+      <ImageBackground source={Assets.Pattern} style={styles.background}>
         <View style={{alignItems: 'center'}}>
           <Image source={Assets.Logo} />
           <Text style={styles.textUp}>FoodNinja</Text>
@@ -47,7 +59,6 @@ const styles = StyleSheet.create({
   },
   textDown: {
     color: '#09051C',
-    fontWeight: '600',
     letterSpacing: 1,
     fontSize: 13,
     lineHeight: 16,

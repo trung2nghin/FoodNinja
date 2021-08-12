@@ -10,35 +10,44 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Assets from '../../config/Assets';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {TRootStackParamList} from '../../../App';
 
-const ViaMethod = ({navigation}) => {
+type SignUpScreenNavigationProp = StackNavigationProp<
+  TRootStackParamList,
+  'SetLocation'
+>;
+
+type Props = {
+  navigation: SignUpScreenNavigationProp;
+};
+const SetLocation = ({navigation}: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.info}>
         <Image source={Assets.back} />
-        <Text style={styles.txtBio}>Forgot password?</Text>
+        <Text style={styles.txtBio}>Set Your Location</Text>
         <Text style={styles.txtEx}>
-          Select which contact details should we{'\n'}use to reset your password
+          This data will be displayed in your account {'\n'}profile for
+          secrurity
         </Text>
       </View>
-
       <View style={{alignItems: 'center'}}>
-        <Pressable style={styles.txtInputBar}>
-          <Image source={Assets.Message} style={styles.img} />
-          <View>
-            <Text style={styles.txt}>Via sms:</Text>
-            <Text style={styles.txtPrv}>**** **** 4235</Text>
+        <View style={styles.payBtn}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Image
+              source={Assets.pin}
+              style={{marginRight: 14, marginLeft: 11}}
+            />
+            <Text style={styles.txtSection}>Your Location</Text>
           </View>
-        </Pressable>
-        <Pressable style={styles.txtInputBar}>
-          <Image source={Assets.Email} style={styles.img} />
           <View>
-            <Text style={styles.txt}>Via email:</Text>
-            <Text style={styles.txtPrv}>**** @gmail.com</Text>
+            <TouchableOpacity style={styles.setLocation}>
+              <Text style={styles.txtSection}>Set Location</Text>
+            </TouchableOpacity>
           </View>
-        </Pressable>
+        </View>
       </View>
-
       <View>
         <View style={styles.btn}>
           <LinearGradient
@@ -46,7 +55,8 @@ const ViaMethod = ({navigation}) => {
             start={{x: 0, y: 0}}
             end={{x: 1, y: 1}}
             style={styles.linearButton}>
-            <TouchableOpacity style={styles.btnAcc} onPress={() => navigation.navigate('Password')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('SignupSuccess')}>
               <Text style={styles.txtAcc}>Next</Text>
             </TouchableOpacity>
           </LinearGradient>
@@ -56,7 +66,7 @@ const ViaMethod = ({navigation}) => {
   );
 };
 
-export default ViaMethod;
+export default SetLocation;
 
 const styles = StyleSheet.create({
   container: {
@@ -74,7 +84,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#09051C',
     marginTop: 20,
-    paddingLeft: 11,
+    paddingLeft: 5,
   },
   txtEx: {
     fontSize: 12,
@@ -82,20 +92,29 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     fontWeight: '400',
     color: '#000000',
-    paddingLeft: 11,
-    marginTop: 19,
+    paddingLeft: 5,
+    marginTop: 20,
     marginBottom: 20,
   },
-  txtInputBar: {
+  txtSection: {
+    fontWeight: 'bold',
+    fontStyle: 'normal',
+    fontSize: 14,
+    lineHeight: 17,
+    letterSpacing: 0.5,
+    color: '#000000',
+  },
+  payBtn: {
     backgroundColor: '#FFF',
-    width: 347,
-    height: 105,
+    width: 342,
+    height: 147,
     borderWidth: 1,
     borderColor: '#F4F4F4',
-    borderRadius: 15,
+    borderRadius: 22,
     marginBottom: 20,
-    flexDirection: 'row',
+    justifyContent: 'space-around',
     alignItems: 'center',
+    // boxshadow
     shadowColor: 'rgb(90, 108, 234)',
     shadowOffset: {
       width: 0,
@@ -105,21 +124,33 @@ const styles = StyleSheet.create({
     shadowRadius: 50,
     elevation: 3,
   },
-  txt: {marginBottom: 10, color: '#828282', fontSize: 16, lineHeight: 24},
-  txtPrv: {marginBottom: 10, color: '#09051C', fontSize: 16, lineHeight: 24},
-  img: {marginLeft: 25, marginRight: 20},
   btn: {
     alignItems: 'center',
+  },
+  setLocation: {
+    width: 322,
+    height: 57,
+    borderRadius: 15,
+    backgroundColor: '#F6F6F6',
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#5A6CEA',
+    shadowOffset: {
+      width: 0,
+      height: 0.5,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 50,
+    elevation: 3,
   },
   linearButton: {
     height: 57,
     width: 157,
     borderRadius: 15,
     marginBottom: 16,
-    marginTop: 190,
+    marginTop: 270,
     justifyContent: 'center',
   },
-
   txtAcc: {
     color: '#FFFFFF',
     fontSize: 16,

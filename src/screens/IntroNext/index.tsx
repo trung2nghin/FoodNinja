@@ -2,15 +2,27 @@ import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import Assets from '../../config/Assets';
 import LinearGradient from 'react-native-linear-gradient';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {TRootStackParamList} from '../../../App';
 
-const Intro = ({navigation}) => {
+type SignUpScreenNavigationProp = StackNavigationProp<
+  TRootStackParamList,
+  'IntroNext'
+>;
+
+type Props = {
+  navigation: SignUpScreenNavigationProp;
+};
+const IntroNext = ({navigation}: Props) => {
   return (
     <View style={styles.container}>
-      <Image source={Assets.intro} />
-      <Text style={styles.txtTitle}>Find your Comfort{'\n'}Food here</Text>
+      <Image style={styles.img} source={Assets.Illustration} />
+      <Text style={styles.txtTitle}>
+        Food Ninja is Where Your{'\n'}Comfort Food Lives
+      </Text>
       <View>
         <Text style={styles.txtTitleSection}>
-          Here You Can find a chef or dish for every{'\n'}taste and color. Enjoy
+          Enjoy a fast and smooth food delivery at{'\n'}your doorstep
         </Text>
       </View>
       <View>
@@ -19,9 +31,7 @@ const Intro = ({navigation}) => {
           start={{x: 0, y: 0}}
           end={{x: 1, y: 1}}
           style={styles.linearButton}>
-          <TouchableOpacity
-            style={styles.btnNext}
-            onPress={() => navigation.navigate('IntroNext')}>
+          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
             <Text style={styles.txtNext}>Next</Text>
           </TouchableOpacity>
         </LinearGradient>
@@ -30,7 +40,7 @@ const Intro = ({navigation}) => {
   );
 };
 
-export default Intro;
+export default IntroNext;
 
 const styles = StyleSheet.create({
   container: {
@@ -38,12 +48,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFF',
   },
+  img: {
+    marginTop: 29,
+    marginBottom: 21,
+  },
   txtTitle: {
     color: '#09051C',
     fontSize: 22,
     lineHeight: 29,
     fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily: 'Viga-Regular',
   },
   txtTitleSection: {
     color: '#000000',
@@ -66,7 +81,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   txtNext: {
-    color: '#FFFFFF',
+    color: '#FEFEFF',
     fontSize: 16,
     lineHeight: 21,
     fontWeight: '400',

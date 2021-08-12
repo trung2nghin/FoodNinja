@@ -2,8 +2,18 @@ import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import Assets from '../../config/Assets';
 import LinearGradient from 'react-native-linear-gradient';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {TRootStackParamList} from '../../../App';
 
-const Finish = ({navigation}) => {
+type SignUpScreenNavigationProp = StackNavigationProp<
+  TRootStackParamList,
+  'Finish'
+>;
+
+type Props = {
+  navigation: SignUpScreenNavigationProp;
+};
+const Finish = ({navigation}: Props) => {
   return (
     <View style={styles.container}>
       <Image source={Assets.congra} style={{marginTop: 120}} />
@@ -15,9 +25,7 @@ const Finish = ({navigation}) => {
         start={{x: 0, y: 0}}
         end={{x: 1, y: 1}}
         style={styles.linearButton}>
-        <TouchableOpacity
-          style={styles.btnSearch}
-          onPress={() => navigation.navigate('SignUp')}>
+        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
           <Text style={styles.txtBtn}>Back</Text>
         </TouchableOpacity>
       </LinearGradient>

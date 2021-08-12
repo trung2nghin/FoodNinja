@@ -4,11 +4,8 @@ import {
   Text,
   View,
   Image,
-  Pressable,
-  TextInput,
   TouchableOpacity,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import Assets from '../../config/Assets';
 
 const Chat = () => {

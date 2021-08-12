@@ -10,27 +10,37 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Assets from '../../config/Assets';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {TRootStackParamList} from '../../../App';
 
-const SignupProcess = ({navigation}) => {
+type SignUpScreenNavigationProp = StackNavigationProp<
+  TRootStackParamList,
+  'Password'
+>;
+
+type Props = {
+  navigation: SignUpScreenNavigationProp;
+};
+const Password = ({navigation}: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.info}>
         <Image source={Assets.back} />
-        <Text style={styles.txtBio}>Fill in your bio to get {'\n'}started</Text>
+        <Text style={styles.txtBio}>Reset your password{'\n'}here</Text>
         <Text style={styles.txtEx}>
-          This data will be displayed in your account {'\n'}profile for
-          secrurity
+          Select which contact details should we{'\n'}use to reset your password
         </Text>
-        <TextInput
-          style={styles.txtInputBar}
-          placeholder="First name"></TextInput>
-        <TextInput
-          style={styles.txtInputBar}
-          placeholder="Last name"></TextInput>
-        <TextInput
-          style={styles.txtInputBar}
-          placeholder="Mobile number"></TextInput>
       </View>
+
+      <View style={{alignItems: 'center'}}>
+        <TextInput
+          style={styles.txtInputBar}
+          placeholder="New Password"></TextInput>
+        <TextInput
+          style={styles.txtInputBar}
+          placeholder="Confirm Password"></TextInput>
+      </View>
+
       <View>
         <View style={styles.btn}>
           <LinearGradient
@@ -38,7 +48,7 @@ const SignupProcess = ({navigation}) => {
             start={{x: 0, y: 0}}
             end={{x: 1, y: 1}}
             style={styles.linearButton}>
-            <TouchableOpacity style={styles.btnAcc} onPress={() => navigation.navigate('PaymentMethod')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Finish')}>
               <Text style={styles.txtAcc}>Next</Text>
             </TouchableOpacity>
           </LinearGradient>
@@ -48,7 +58,7 @@ const SignupProcess = ({navigation}) => {
   );
 };
 
-export default SignupProcess;
+export default Password;
 
 const styles = StyleSheet.create({
   container: {
@@ -57,7 +67,7 @@ const styles = StyleSheet.create({
   },
   info: {
     paddingTop: 38,
-    paddingLeft: 14,
+    paddingLeft: 25,
   },
   txtBio: {
     fontSize: 25,
@@ -104,7 +114,7 @@ const styles = StyleSheet.create({
     width: 157,
     borderRadius: 15,
     marginBottom: 16,
-    marginTop: 150,
+    marginTop: 250,
     justifyContent: 'center',
   },
 

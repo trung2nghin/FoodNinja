@@ -13,9 +13,20 @@ import {
 import Banner from './components/Banner';
 import Header from '../../components/Header';
 import Assets from '../../config/Assets';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {TRootStackParamList} from '../../../App';
+
+type MainTabNavigationProp = StackNavigationProp<
+  TRootStackParamList,
+  'MainTab'
+>;
+
+type Props = {
+  navigation: MainTabNavigationProp;
+};
 
 const widthScreen = Dimensions.get('window').width;
-const Home = ({navigation}) => {
+const Home = ({navigation}: Props) => {
   const dataNearestRestaurant = [
     {
       id: '0',

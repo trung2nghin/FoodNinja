@@ -4,33 +4,41 @@ import {
   Text,
   View,
   Image,
-  Pressable,
   TextInput,
   TouchableOpacity,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Assets from '../../config/Assets';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {TRootStackParamList} from '../../../App';
 
-const UploadPhoto = ({navigation}) => {
+type SignUpScreenNavigationProp = StackNavigationProp<
+  TRootStackParamList,
+  'SignupProcess'
+>;
+
+type Props = {
+  navigation: SignUpScreenNavigationProp;
+};
+const SignupProcess = ({navigation}: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.info}>
         <Image source={Assets.back} />
-        <Text style={styles.txtBio}>Upload Your Photo {'\n'}Profile</Text>
+        <Text style={styles.txtBio}>Fill in your bio to get {'\n'}started</Text>
         <Text style={styles.txtEx}>
           This data will be displayed in your account {'\n'}profile for
           secrurity
         </Text>
-        <View>
-          <TouchableOpacity style={styles.payBtn}>
-            <Image source={Assets.gallery} />
-            <Text style={styles.txtSection}>From Gallery</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.payBtn}>
-            <Image source={Assets.camera} />
-            <Text style={styles.txtSection}>Take Photo</Text>
-          </TouchableOpacity>
-        </View>
+        <TextInput
+          style={styles.txtInputBar}
+          placeholder="First name"></TextInput>
+        <TextInput
+          style={styles.txtInputBar}
+          placeholder="Last name"></TextInput>
+        <TextInput
+          style={styles.txtInputBar}
+          placeholder="Mobile number"></TextInput>
       </View>
       <View>
         <View style={styles.btn}>
@@ -40,8 +48,7 @@ const UploadPhoto = ({navigation}) => {
             end={{x: 1, y: 1}}
             style={styles.linearButton}>
             <TouchableOpacity
-              style={styles.btnAcc}
-              onPress={() => navigation.navigate('UploadPreview')}>
+              onPress={() => navigation.navigate('PaymentMethod')}>
               <Text style={styles.txtAcc}>Next</Text>
             </TouchableOpacity>
           </LinearGradient>
@@ -51,7 +58,7 @@ const UploadPhoto = ({navigation}) => {
   );
 };
 
-export default UploadPhoto;
+export default SignupProcess;
 
 const styles = StyleSheet.create({
   container: {
@@ -60,7 +67,7 @@ const styles = StyleSheet.create({
   },
   info: {
     paddingTop: 38,
-    paddingLeft: 20,
+    paddingLeft: 14,
   },
   txtBio: {
     fontSize: 25,
@@ -69,7 +76,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#09051C',
     marginTop: 20,
-    paddingLeft: 5,
+    paddingLeft: 11,
   },
   txtEx: {
     fontSize: 12,
@@ -77,29 +84,19 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     fontWeight: '400',
     color: '#000000',
-    paddingLeft: 5,
-    marginTop: 20,
+    paddingLeft: 11,
+    marginTop: 19,
     marginBottom: 20,
   },
-  txtSection: {
-    fontWeight: 'bold',
-    fontStyle: 'normal',
-    fontSize: 14,
-    lineHeight: 25,
-    color: '#000000',
-    paddingTop: 4,
-  },
-  payBtn: {
+  txtInputBar: {
     backgroundColor: '#FFF',
-    width: 350,
-    height: 129,
+    width: 347,
+    height: 61,
     borderWidth: 1,
     borderColor: '#F4F4F4',
-    borderRadius: 22,
+    borderRadius: 15,
+    paddingLeft: 28,
     marginBottom: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    // boxshadow
     shadowColor: 'rgb(90, 108, 234)',
     shadowOffset: {
       width: 0,
@@ -117,9 +114,10 @@ const styles = StyleSheet.create({
     width: 157,
     borderRadius: 15,
     marginBottom: 16,
-    marginTop: 110,
+    marginTop: 150,
     justifyContent: 'center',
   },
+
   txtAcc: {
     color: '#FFFFFF',
     fontSize: 16,

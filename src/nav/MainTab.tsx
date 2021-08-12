@@ -1,5 +1,9 @@
 import * as React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {
+  BottomTabBarOptions,
+  BottomTabBarProps,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/Home';
 import ProfileScreen from '../screens/Profile';
 import CartScreen from '../screens/Cart';
@@ -15,8 +19,16 @@ import {
 } from 'react-native';
 import {getBottomSpace} from 'react-native-iphone-x-helper';
 
-const Tab = createBottomTabNavigator();
 const widthScreen = Dimensions.get('window').width;
+
+export type TMainTabParamList = {
+  Home: undefined;
+  Profile: undefined;
+  Cart: undefined;
+  Chat: undefined;
+};
+
+const Tab = createBottomTabNavigator<TMainTabParamList>();
 const MainTab = () => {
   return (
     <Tab.Navigator
@@ -57,10 +69,17 @@ const MainTab = () => {
   );
 };
 
-const MyTab = ({state, activeTintColor, inactiveTintColor, navigation}) => {
-  let routeNames = state.routeNames;
+type TRouteName = keyof TMainTabParamList;
+
+const MyTab = ({
+  state,
+  activeTintColor = Colors.primary,
+  inactiveTintColor = Colors.primary5,
+  navigation,
+}: BottomTabBarProps<BottomTabBarOptions>) => {
+  let routeNames = state.routeNames as TRouteName[];
   let currentIndex = state.index; //index tab dang focus
-  const renderContent = (item, color) => {
+  const renderContent = (item: TRouteName, color: string) => {
     switch (item) {
       case 'Home':
         return <IconlyPack.Home set="bold" color={color} key={item} />;

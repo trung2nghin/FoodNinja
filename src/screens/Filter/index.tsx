@@ -11,8 +11,14 @@ import {
 import Header from '../../components/Header';
 import LinearGradient from 'react-native-linear-gradient';
 import Assets from '../../config/Assets';
+import {RouteProp} from '@react-navigation/native';
+import {TRootStackParamList} from '../../../App';
+type FilterRouteProp = RouteProp<TRootStackParamList, 'Filter'>;
 
-const Section = ({title, data}) => {
+interface Props {
+  route: FilterRouteProp;
+}
+const Section = ({title, data} : {title: string; data: any[]}) => {
   return (
     <View style={{marginHorizontal: 25}}>
       <Text style={styles.txtTitleSection}>{title}</Text>
@@ -29,7 +35,7 @@ const Section = ({title, data}) => {
   );
 };
 
-const Filter = ({route}) => {
+const Filter = ({route}:Props) => {
   // console.log('route', route);
   const dataFilterType = ['Restaurant', 'Menu'];
   const dataFilterLocation = ['1 Km', '> 10 Km', '< 10 Km'];
@@ -43,7 +49,9 @@ const Filter = ({route}) => {
   return (
     <View style={styles.spaceFlex}>
       <SafeAreaView style={{flex: 1}}>
-        {/* <Text></Text> */}
+        <Text>
+          {route.params.name} - {route.params.age}
+        </Text>
         <Header />
         {/* view search */}
         <View style={styles.containerSearch}>

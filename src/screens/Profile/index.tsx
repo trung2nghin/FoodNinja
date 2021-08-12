@@ -10,7 +10,6 @@ import {
   Dimensions,
   ScrollView,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import Assets from '../../config/Assets';
 
 const widthScreen = Dimensions.get('window').width;
@@ -135,7 +134,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     borderWidth: 1,
     borderColor: '#F4F4F4',
-    flexDirection: 'row',
     shadowColor: 'rgb(90, 108, 234)',
     shadowOffset: {
       width: 0,
@@ -170,7 +168,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     borderWidth: 1,
     borderColor: '#F4F4F4',
-    flexDirection: 'row',
     shadowColor: 'rgb(90, 108, 234)',
     shadowOffset: {
       width: 0,

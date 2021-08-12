@@ -9,8 +9,19 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Assets from '../../config/Assets';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {TRootStackParamList} from '../../../App';
 
-const UploadPreview = ({navigation}) => {
+type SignUpScreenNavigationProp = StackNavigationProp<
+  TRootStackParamList,
+  'UploadPreview'
+>;
+
+type Props = {
+  navigation: SignUpScreenNavigationProp;
+};
+
+const UploadPreview = ({navigation}: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.info}>
@@ -32,7 +43,6 @@ const UploadPreview = ({navigation}) => {
               end={{x: 1, y: 1}}
               style={styles.linearButton}>
               <TouchableOpacity
-                style={styles.btnAcc}
                 onPress={() => navigation.navigate('SetLocation')}>
                 <Text style={styles.txtAcc}>Next</Text>
               </TouchableOpacity>

@@ -1,34 +1,37 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Pressable,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Assets from '../../config/Assets';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {TRootStackParamList} from '../../../App';
 
-const Password = ({navigation}) => {
+type SignUpScreenNavigationProp = StackNavigationProp<
+  TRootStackParamList,
+  'Verification'
+>;
+
+type Props = {
+  navigation: SignUpScreenNavigationProp;
+};
+
+const Verification = ({navigation}: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.info}>
         <Image source={Assets.back} />
-        <Text style={styles.txtBio}>Reset your password{'\n'}here</Text>
+        <Text style={styles.txtBio}>Enter 4-digit{'\n'}Verification code</Text>
         <Text style={styles.txtEx}>
-          Select which contact details should we{'\n'}use to reset your password
+          Code send to + 6282045****. This code will{'\n'}expired in 01:30
         </Text>
       </View>
 
       <View style={{alignItems: 'center'}}>
-        <TextInput
-          style={styles.txtInputBar}
-          placeholder="New Password"></TextInput>
-        <TextInput
-          style={styles.txtInputBar}
-          placeholder="Confirm Password"></TextInput>
+        <View style={styles.txtInputBar}>
+          <Text style={styles.txt}>1</Text>
+          <Text style={styles.txt}>9</Text>
+          <Text style={styles.txt}>2</Text>
+          <Text style={styles.txt}>3</Text>
+        </View>
       </View>
 
       <View>
@@ -38,9 +41,7 @@ const Password = ({navigation}) => {
             start={{x: 0, y: 0}}
             end={{x: 1, y: 1}}
             style={styles.linearButton}>
-            <TouchableOpacity
-              style={styles.btnAcc}
-              onPress={() => navigation.navigate('Finish')}>
+            <TouchableOpacity onPress={() => navigation.navigate('ViaMethod')}>
               <Text style={styles.txtAcc}>Next</Text>
             </TouchableOpacity>
           </LinearGradient>
@@ -50,7 +51,7 @@ const Password = ({navigation}) => {
   );
 };
 
-export default Password;
+export default Verification;
 
 const styles = StyleSheet.create({
   container: {
@@ -78,17 +79,19 @@ const styles = StyleSheet.create({
     color: '#000000',
     paddingLeft: 11,
     marginTop: 19,
-    marginBottom: 20,
+    marginBottom: 38,
   },
   txtInputBar: {
     backgroundColor: '#FFF',
     width: 347,
-    height: 61,
+    height: 103,
     borderWidth: 1,
     borderColor: '#F4F4F4',
-    borderRadius: 15,
-    paddingLeft: 28,
+    borderRadius: 22,
     marginBottom: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
     shadowColor: 'rgb(90, 108, 234)',
     shadowOffset: {
       width: 0,
@@ -98,6 +101,13 @@ const styles = StyleSheet.create({
     shadowRadius: 50,
     elevation: 3,
   },
+  txt: {
+    fontSize: 35,
+    lineHeight: 50,
+    color: '#09051C',
+    fontStyle: 'normal',
+    fontWeight: '700',
+  },
   btn: {
     alignItems: 'center',
   },
@@ -106,7 +116,7 @@ const styles = StyleSheet.create({
     width: 157,
     borderRadius: 15,
     marginBottom: 16,
-    marginTop: 250,
+    marginTop: 270,
     justifyContent: 'center',
   },
 

@@ -10,25 +10,44 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Assets from '../../config/Assets';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {TRootStackParamList} from '../../../App';
 
-const Verification = ({navigation}) => {
+type SignUpScreenNavigationProp = StackNavigationProp<
+  TRootStackParamList,
+  'ViaMethod'
+>;
+
+type Props = {
+  navigation: SignUpScreenNavigationProp;
+};
+
+const ViaMethod = ({navigation}: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.info}>
         <Image source={Assets.back} />
-        <Text style={styles.txtBio}>Enter 4-digit{'\n'}Verification code</Text>
+        <Text style={styles.txtBio}>Forgot password?</Text>
         <Text style={styles.txtEx}>
-          Code send to + 6282045****. This code will{'\n'}expired in 01:30
+          Select which contact details should we{'\n'}use to reset your password
         </Text>
       </View>
 
       <View style={{alignItems: 'center'}}>
-        <View style={styles.txtInputBar}>
-          <Text style={styles.txt}>1</Text>
-          <Text style={styles.txt}>9</Text>
-          <Text style={styles.txt}>2</Text>
-          <Text style={styles.txt}>3</Text>
-        </View>
+        <Pressable style={styles.txtInputBar}>
+          <Image source={Assets.Message} style={styles.img} />
+          <View>
+            <Text style={styles.txt}>Via sms:</Text>
+            <Text style={styles.txtPrv}>**** **** 4235</Text>
+          </View>
+        </Pressable>
+        <Pressable style={styles.txtInputBar}>
+          <Image source={Assets.Email} style={styles.img} />
+          <View>
+            <Text style={styles.txt}>Via email:</Text>
+            <Text style={styles.txtPrv}>**** @gmail.com</Text>
+          </View>
+        </Pressable>
       </View>
 
       <View>
@@ -38,9 +57,7 @@ const Verification = ({navigation}) => {
             start={{x: 0, y: 0}}
             end={{x: 1, y: 1}}
             style={styles.linearButton}>
-            <TouchableOpacity
-              style={styles.btnAcc}
-              onPress={() => navigation.navigate('ViaMethod')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Password')}>
               <Text style={styles.txtAcc}>Next</Text>
             </TouchableOpacity>
           </LinearGradient>
@@ -50,7 +67,7 @@ const Verification = ({navigation}) => {
   );
 };
 
-export default Verification;
+export default ViaMethod;
 
 const styles = StyleSheet.create({
   container: {
@@ -78,19 +95,18 @@ const styles = StyleSheet.create({
     color: '#000000',
     paddingLeft: 11,
     marginTop: 19,
-    marginBottom: 38,
+    marginBottom: 20,
   },
   txtInputBar: {
     backgroundColor: '#FFF',
     width: 347,
-    height: 103,
+    height: 105,
     borderWidth: 1,
     borderColor: '#F4F4F4',
-    borderRadius: 22,
+    borderRadius: 15,
     marginBottom: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
     shadowColor: 'rgb(90, 108, 234)',
     shadowOffset: {
       width: 0,
@@ -100,13 +116,9 @@ const styles = StyleSheet.create({
     shadowRadius: 50,
     elevation: 3,
   },
-  txt: {
-    fontSize: 35,
-    lineHeight: 50,
-    color: '#09051C',
-    fontStyle: 'normal',
-    fontWeight: '700',
-  },
+  txt: {marginBottom: 10, color: '#828282', fontSize: 16, lineHeight: 24},
+  txtPrv: {marginBottom: 10, color: '#09051C', fontSize: 16, lineHeight: 24},
+  img: {marginLeft: 25, marginRight: 20},
   btn: {
     alignItems: 'center',
   },
@@ -115,7 +127,7 @@ const styles = StyleSheet.create({
     width: 157,
     borderRadius: 15,
     marginBottom: 16,
-    marginTop: 270,
+    marginTop: 190,
     justifyContent: 'center',
   },
 

@@ -9,7 +9,7 @@ const Header = () => {
       <TouchableOpacity
         style={styles.btnNoti}
         onPress={() => {
-          alert('onPress ic noti');
+          // alert('onPress ic noti');
         }}>
         <Image source={Assets.ic_notification} />
       </TouchableOpacity>

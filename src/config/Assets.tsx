@@ -33,6 +33,9 @@ const Assets = {
   edit: require('../assets/edit.png'),
   voucher: require('../assets/voucher.png'),
   spacy: require('../assets/spacy.png'),
+  plus: require('../assets/Plus.png'),
+  minus: require('../assets/Minus.png'),
+
 };
  
 export default Assets;

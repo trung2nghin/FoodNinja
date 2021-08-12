@@ -21,8 +21,32 @@ import Finish from './src/screens/Finish';
 import Chat from './src/screens/Chat';
 import Profile from './src/screens/Profile';
 
-const Stack = createStackNavigator();
+export type TRootStackParamList = {
+  MainTab: undefined;
+  Filter: {
+    name: string;
+    age: number;
+  };
+  Onboarding: undefined;
+  Intro: undefined;
+  IntroNext: undefined;
+  SignUp: undefined;
+  SignIn: undefined;
+  SignupProcess: undefined;
+  PaymentMethod: undefined;
+  UploadPhoto: undefined;
+  UploadPreview: undefined;
+  SetLocation: undefined;
+  SignupSuccess: undefined;
+  Verification: undefined;
+  ViaMethod: undefined;
+  Password: undefined;
+  Finish: undefined;
+  Profile: undefined;
+  Chat: undefined;
+};
 
+const Stack = createStackNavigator<TRootStackParamList>();
 const App = () => {
   return (
     <NavigationContainer>

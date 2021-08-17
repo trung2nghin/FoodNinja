@@ -5,13 +5,13 @@ import LinearGradient from 'react-native-linear-gradient';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TRootStackParamList} from '../../../App';
 
-type SignUpScreenNavigationProp = StackNavigationProp<
+type FinishScreenNavigationProp = StackNavigationProp<
   TRootStackParamList,
   'Finish'
 >;
 
 type Props = {
-  navigation: SignUpScreenNavigationProp;
+  navigation: FinishScreenNavigationProp;
 };
 const Finish = ({navigation}: Props) => {
   return (

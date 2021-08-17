@@ -13,13 +13,13 @@ import Assets from '../../config/Assets';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TRootStackParamList} from '../../../App';
 
-type SignUpScreenNavigationProp = StackNavigationProp<
+type ViaMethodScreenNavigationProp = StackNavigationProp<
   TRootStackParamList,
   'ViaMethod'
 >;
 
 type Props = {
-  navigation: SignUpScreenNavigationProp;
+  navigation: ViaMethodScreenNavigationProp;
 };
 
 const ViaMethod = ({navigation}: Props) => {

@@ -5,6 +5,7 @@ import Onboarding from './src/screens/Onboarding';
 import Intro from './src/screens/Intro';
 import IntroNext from './src/screens/IntroNext';
 import MainTab from './src/nav/MainTab';
+import Home from './src/screens/Home';
 import Filter from './src/screens/Filter';
 import SignUp from './src/screens/SignUp';
 import SignIn from './src/screens/SignIn';
@@ -23,6 +24,7 @@ import Profile from './src/screens/Profile';
 
 export type TRootStackParamList = {
   MainTab: undefined;
+  Home: undefined;
   Filter: {
     name: string;
     age: number;
@@ -129,6 +131,11 @@ const App = () => {
         <Stack.Screen
           name="MainTab"
           component={MainTab}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Home"
+          component={Home}
           options={{headerShown: false}}
         />
         <Stack.Screen

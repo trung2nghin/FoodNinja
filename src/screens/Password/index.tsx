@@ -4,7 +4,6 @@ import {
   Text,
   View,
   Image,
-  Pressable,
   TextInput,
   TouchableOpacity,
 } from 'react-native';
@@ -13,13 +12,13 @@ import Assets from '../../config/Assets';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TRootStackParamList} from '../../../App';
 
-type SignUpScreenNavigationProp = StackNavigationProp<
+type PasswordScreenNavigationProp = StackNavigationProp<
   TRootStackParamList,
   'Password'
 >;
 
 type Props = {
-  navigation: SignUpScreenNavigationProp;
+  navigation: PasswordScreenNavigationProp;
 };
 const Password = ({navigation}: Props) => {
   return (

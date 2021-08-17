@@ -13,12 +13,14 @@ import LinearGradient from 'react-native-linear-gradient';
 import Assets from '../../config/Assets';
 import {RouteProp} from '@react-navigation/native';
 import {TRootStackParamList} from '../../../App';
+import debounce from 'lodash.debounce';
+
 type FilterRouteProp = RouteProp<TRootStackParamList, 'Filter'>;
 
 interface Props {
   route: FilterRouteProp;
 }
-const Section = ({title, data} : {title: string; data: any[]}) => {
+const Section = ({title, data}: {title: string; data: any[]}) => {
   return (
     <View style={{marginHorizontal: 25}}>
       <Text style={styles.txtTitleSection}>{title}</Text>
@@ -34,24 +36,32 @@ const Section = ({title, data} : {title: string; data: any[]}) => {
     </View>
   );
 };
+const dataFilterFood = ['Cake', 'Soup', 'Main Course', 'Appetizer', 'Dessert'];
+const Filter = ({route}: Props) => {
 
-const Filter = ({route}:Props) => {
-  // console.log('route', route);
-  const dataFilterType = ['Restaurant', 'Menu'];
-  const dataFilterLocation = ['1 Km', '> 10 Km', '< 10 Km'];
-  const dataFilterFood = [
-    'Cake',
-    'Soup',
-    'Main Course',
-    'Appetizer',
-    'Dessert',
-  ];
+  const [dataFilter, setDataFilter] = React.useState(dataFilterFood);
+  
+  const timeStamp = React.useMemo(() => {
+    return (new Date().valueOf());
+  }, []);
+  
+  const _timeStamp = new Date().valueOf();
+
+  console.log('timeStamp', timeStamp, _timeStamp);
+  
+  const onChangeText = React.useCallback(
+    debounce((text: string) => {
+      console.log('text', text);
+      let result = dataFilter.filter(e => e.includes(text));
+      setDataFilter(result);
+    }, 300),
+    [],
+  ); // cac tham so trong des khi thay doi => cap nhat useCallback
+     // cac hook => memorize lai va cap nhat khi cac tham so trong des [] thay doi
+
   return (
     <View style={styles.spaceFlex}>
       <SafeAreaView style={{flex: 1}}>
-        <Text>
-          {route.params.name} - {route.params.age}
-        </Text>
         <Header />
         {/* view search */}
         <View style={styles.containerSearch}>
@@ -60,10 +70,11 @@ const Filter = ({route}:Props) => {
             style={styles.inputSearch}
             placeholder="What do you want to order?"
             placeholderTextColor="rgba(249,168,77,0.4)"
+            
           />
         </View>
-        <Section title="Type" data={dataFilterType} />
-        <Section title="Location" data={dataFilterLocation} />
+        {/* <Section title="Type" data={dataFilterType} />
+        <Section title="Location" data={dataFilterLocation} /> */}
         <Section title="Food" data={dataFilterFood} />
         <View style={styles.spaceFlex} />
         <LinearGradient

@@ -12,19 +12,21 @@ import Assets from '../../config/Assets';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TRootStackParamList} from '../../../App';
 
-type SignUpScreenNavigationProp = StackNavigationProp<
+type SignupProcessScreenNavigationProp = StackNavigationProp<
   TRootStackParamList,
   'SignupProcess'
 >;
 
 type Props = {
-  navigation: SignUpScreenNavigationProp;
+  navigation: SignupProcessScreenNavigationProp;
 };
 const SignupProcess = ({navigation}: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.info}>
-        <Image source={Assets.back} />
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Image source={Assets.back} />
+        </TouchableOpacity>
         <Text style={styles.txtBio}>Fill in your bio to get {'\n'}started</Text>
         <Text style={styles.txtEx}>
           This data will be displayed in your account {'\n'}profile for

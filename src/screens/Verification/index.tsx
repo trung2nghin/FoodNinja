@@ -5,13 +5,13 @@ import Assets from '../../config/Assets';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TRootStackParamList} from '../../../App';
 
-type SignUpScreenNavigationProp = StackNavigationProp<
+type VerificationScreenNavigationProp = StackNavigationProp<
   TRootStackParamList,
   'Verification'
 >;
 
 type Props = {
-  navigation: SignUpScreenNavigationProp;
+  navigation: VerificationScreenNavigationProp;
 };
 
 const Verification = ({navigation}: Props) => {

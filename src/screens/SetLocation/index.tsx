@@ -4,8 +4,6 @@ import {
   Text,
   View,
   Image,
-  Pressable,
-  TextInput,
   TouchableOpacity,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -13,19 +11,21 @@ import Assets from '../../config/Assets';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TRootStackParamList} from '../../../App';
 
-type SignUpScreenNavigationProp = StackNavigationProp<
+type SetLocationScreenNavigationProp = StackNavigationProp<
   TRootStackParamList,
   'SetLocation'
 >;
 
 type Props = {
-  navigation: SignUpScreenNavigationProp;
+  navigation: SetLocationScreenNavigationProp;
 };
 const SetLocation = ({navigation}: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.info}>
-        <Image source={Assets.back} />
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Image source={Assets.back} />
+        </TouchableOpacity>
         <Text style={styles.txtBio}>Set Your Location</Text>
         <Text style={styles.txtEx}>
           This data will be displayed in your account {'\n'}profile for

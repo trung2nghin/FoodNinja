@@ -12,15 +12,15 @@ const widthImgBanner = widthScreen - 50;
 const scaleImgBanner = 325 / 150;
 const heightImgBanner = widthImgBanner / scaleImgBanner;
 
-interface IDataBanner {
+type IDataBanner = {
   id: string;
   img: ImageSourcePropType;
-}
+};
 
-interface Props {
+type Props = {
   dataBanner: IDataBanner[];
   autoplay: boolean;
-}
+};
 
 const Banner = ({autoplay = true, dataBanner}: Props) => {
   return (

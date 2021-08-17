@@ -25,7 +25,9 @@ const UploadPreview = ({navigation}: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.info}>
-        <Image source={Assets.back} style={{marginLeft: 25}} />
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Image source={Assets.back} style={{marginLeft: 25}} />
+        </TouchableOpacity>
         <Text style={styles.txtBio}>Upload Your Photo {'\n'}Profile</Text>
         <Text style={styles.txtEx}>
           This data will be displayed in your account {'\n'}profile for

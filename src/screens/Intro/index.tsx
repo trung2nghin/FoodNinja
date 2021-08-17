@@ -5,13 +5,13 @@ import LinearGradient from 'react-native-linear-gradient';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TRootStackParamList} from '../../../App';
 
-type SignUpScreenNavigationProp = StackNavigationProp<
+type IntroScreenNavigationProp = StackNavigationProp<
   TRootStackParamList,
   'Intro'
 >;
 
 type Props = {
-  navigation: SignUpScreenNavigationProp;
+  navigation: IntroScreenNavigationProp;
 };
 const Intro = ({navigation}: Props) => {
   return (

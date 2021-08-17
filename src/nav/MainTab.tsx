@@ -16,7 +16,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Text,
-} from 'react-native';
+} from 'react-native'; 
 import {getBottomSpace} from 'react-native-iphone-x-helper';
 
 const widthScreen = Dimensions.get('window').width;

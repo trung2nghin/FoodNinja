@@ -12,13 +12,13 @@ import Assets from '../../config/Assets';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TRootStackParamList} from '../../../App';
 
-type SignUpScreenNavigationProp = StackNavigationProp<
+type OnboardingScreenNavigationProp = StackNavigationProp<
   TRootStackParamList,
   'Onboarding'
 >;
 
 type Props = {
-  navigation: SignUpScreenNavigationProp;
+  navigation: OnboardingScreenNavigationProp;
 };
 const widthScreen = Dimensions.get('window').width;
 const Onboarding = ({navigation}: Props) => {

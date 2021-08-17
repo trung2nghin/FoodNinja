@@ -1,29 +1,25 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Assets from '../../config/Assets';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TRootStackParamList} from '../../../App';
 
-type SignUpScreenNavigationProp = StackNavigationProp<
+type PaymentMethodScreenNavigationProp = StackNavigationProp<
   TRootStackParamList,
   'PaymentMethod'
 >;
 
 type Props = {
-  navigation: SignUpScreenNavigationProp;
+  navigation: PaymentMethodScreenNavigationProp;
 };
 const PaymentMethod = ({navigation}: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.info}>
-        <Image source={Assets.back} />
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Image source={Assets.back} />
+        </TouchableOpacity>
         <Text style={styles.txtBio}>Payment Method</Text>
         <Text style={styles.txtEx}>
           This data will be displayed in your account {'\n'}profile for
@@ -46,7 +42,8 @@ const PaymentMethod = ({navigation}: Props) => {
             start={{x: 0, y: 0}}
             end={{x: 1, y: 1}}
             style={styles.linearButton}>
-            <TouchableOpacity onPress={() => navigation.navigate('UploadPhoto')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('UploadPhoto')}>
               <Text style={styles.txtAcc}>Next</Text>
             </TouchableOpacity>
           </LinearGradient>

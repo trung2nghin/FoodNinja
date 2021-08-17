@@ -1,17 +1,25 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import Assets from '../../config/Assets';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {TRootStackParamList} from '../../../App';
 
-const Chat = () => {
+type ChatScreenNavigationProp = StackNavigationProp<
+  TRootStackParamList,
+  'PaymentMethod'
+>;
+
+type Props = {
+  navigation: ChatScreenNavigationProp;
+};
+
+const Chat = ({navigation}: Props) => {
   return (
     <View style={styles.container}>
-      <Image source={Assets.back} style={styles.icon} />
+      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <Image source={Assets.back} style={styles.icon} />
+      </TouchableOpacity>
+
       <Text style={styles.txtBio}>Chat</Text>
       <View style={styles.info}>
         <TouchableOpacity style={styles.chatBtn}>

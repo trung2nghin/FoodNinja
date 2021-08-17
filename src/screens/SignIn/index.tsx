@@ -4,7 +4,6 @@ import {
   Text,
   View,
   Image,
-  Pressable,
   TextInput,
   TouchableOpacity,
 } from 'react-native';
@@ -13,13 +12,13 @@ import Assets from '../../config/Assets';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TRootStackParamList} from '../../../App';
 
-type SignUpScreenNavigationProp = StackNavigationProp<
+type SignInScreenNavigationProp = StackNavigationProp<
   TRootStackParamList,
   'SignIn'
 >;
 
 type Props = {
-  navigation: SignUpScreenNavigationProp;
+  navigation: SignInScreenNavigationProp;
 };
 const SignIn = ({navigation}: Props) => {
   return (

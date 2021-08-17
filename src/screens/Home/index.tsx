@@ -15,7 +15,7 @@ import Header from '../../components/Header';
 import Assets from '../../config/Assets';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TRootStackParamList} from '../../../App';
-
+ 
 type MainTabNavigationProp = StackNavigationProp<
   TRootStackParamList,
   'MainTab'
